@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My List of items</title>
+    <style>
+        .flex-container {
+          display: flex;  flex-direction:row;
+          background-color: rgb(0, 149, 255);
+      }
+    
+    .flex-container > div {  /*div children of the flex container*/
+      background-color: #f1f1f1; 
+      margin: 10px;  padding: 20px;  font-size: 30px;
+    }
+    
+    /* Responsive layout */
+    @media (max-width: 600px) { 
+         .flex-container{
+             flex-direction:column;
+             background-color: green;
+          }
+        }
+    </style></head>
+</head>
+<body style="padding: 14px;">
+    <h2>Swetha Kamineni builds lists with divs</h1>
+    <input id="inputText" type="text" placeholder="Enter your item" />
+    <br><br>
+    <div class="flex-container" id="target">
+        <div class="divlist">row item 1</div>   
+        <div class="divlist">row item 2</div>  
+        <div class="divlist">row item 3</div>  
+    </div>
+  
+    <p> Press the button to create an new element of type div and then add it to the container.</p>
+    <button onclick="makeNewDiv()" style="background-color:rgb(9, 64, 64); color:rgb(61, 98, 100)">Add end</button>
+    <button onclick="addFront()" style="background-color:rgb(9, 69, 69); color:rgb(64, 186, 193)">Add front</button>
+    <button onclick="remove()" style="background-color:rgb(9, 70, 70); color:rgb(64, 146, 150)">Remove</button>
+    <button onclick="swapItems()" style="background-color:rgb(9, 60, 60); color:rgb(64, 139, 143)">Swap</button>
+
+    <script>
+        function makeNewDiv()
+         {
+            /* make the div and its text */
+            let element = document.createElement("div")
+            const inputText = document.getElementById("inputText").value;
+            element.innerHTML = inputText;
+            element.classList.add("divlist");
+            element.style.color = "Green"
+
+            let container = document.getElementById('target')
+            container.appendChild(element);
+        }
+
+        function addFront() 
+        {
+            let element = document.createElement("div");
+            const inputText = document.getElementById("inputText").value;
+
+            element.innerHTML = inputText;
+            element.classList.add("divlist");
+            element.style.color = "blue";
+
+            let container = document.getElementById("target");
+            container.insertBefore(element, container.firstChild);
+        }
+
+        function remove() 
+        {
+            const divListItems = document.getElementsByClassName("divlist");
+
+            if (divListItems.length > 0) {
+                divListItems[Math.floor(divListItems.length / 2)].remove();
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
