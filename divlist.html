@@ -74,6 +74,22 @@
                 divListItems[Math.floor(divListItems.length / 2)].remove();
             }
         }
+        function swapItems() {
+            const divListItems = document.getElementsByClassName("divlist");
+            const length = divListItems.length;
+            if (length >= 2) {
+                const index1 = Math.floor(Math.random() * length);
+                let index2 = Math.floor(Math.random() * length);
+                while (index2 === index1) {
+                    index2 = Math.floor(Math.random() * length);
+                }
+                const obj1 = divListItems[index1];
+                const obj2 = divListItems[index2];
+                const temp = obj1.nextSibling;
+                obj2.parentNode.insertBefore(obj1, obj2.nextSibling);
+                obj1.parentNode.insertBefore(obj2, temp);
+            }
+        }
         
     </script>
 </body>
